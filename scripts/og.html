@@ -2,52 +2,53 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap" rel="stylesheet" />
     <style>
       * { box-sizing: border-box; margin: 0; }
-      body { width: 1200px; height: 630px; background: #0b0c10; font-family: Inter, system-ui, sans-serif; color: #f2f3f7; overflow: hidden; position: relative; }
-      .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; filter: blur(140px); opacity: 0.35; }
-      .g1 { background: #8b5cf6; left: -300px; top: -400px; }
-      .g2 { background: #38bdf8; right: -350px; bottom: -450px; }
-      .wrap { position: relative; display: flex; height: 100%; padding: 72px 80px; align-items: center; justify-content: space-between; }
-      .brand { display: flex; align-items: center; gap: 16px; font-weight: 600; font-size: 28px; letter-spacing: -0.01em; color: #c9ccd6; }
+      body { width: 1200px; height: 630px; background: #07080c; font-family: Inter, system-ui, sans-serif; color: #f2f3f7; overflow: hidden; position: relative; }
+      .grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 30% 40%, #000 30%, transparent 75%); }
+      .glow { position: absolute; border-radius: 50%; filter: blur(120px); }
+      .g1 { width: 700px; height: 700px; background: #7c3aed; opacity: 0.45; left: -250px; top: -300px; }
+      .g2 { width: 700px; height: 700px; background: #0ea5e9; opacity: 0.35; right: -250px; bottom: -350px; }
+      .g3 { width: 400px; height: 400px; background: #10b981; opacity: 0.18; right: 200px; top: -200px; }
+      .wrap { position: relative; height: 100%; padding: 64px 72px; display: grid; grid-template-columns: 560px 1fr; align-items: center; }
+      .brand { display: flex; align-items: center; gap: 14px; font-weight: 600; font-size: 26px; color: #c9ccd6; letter-spacing: -0.01em; }
       .brand span { color: #a78bfa; }
-      h1 { font-size: 72px; line-height: 1.02; letter-spacing: -0.03em; font-weight: 700; margin-top: 28px; max-width: 640px; }
-      p { font-size: 26px; color: #9aa0ad; margin-top: 24px; max-width: 600px; line-height: 1.35; }
-      .pills { display: flex; gap: 10px; margin-top: 36px; }
-      .pill { font-size: 18px; font-weight: 600; padding: 10px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.04); }
-      .cards { position: relative; width: 420px; height: 420px; }
-      .card { position: absolute; width: 360px; height: 220px; border-radius: 22px; background: linear-gradient(160deg, #15161e, #0f1016); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 30px 80px -30px rgba(0,0,0,0.9); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
-      .c1 { left: 60px; top: 160px; transform: rotate(-7deg); }
-      .c2 { left: 30px; top: 110px; transform: rotate(4deg); opacity: 0.9; }
-      .c3 { left: 0px; top: 60px; transform: rotate(-2deg); }
-      .q { font-size: 24px; font-weight: 600; line-height: 1.3; }
-      .cloze { color: #a78bfa; }
-      .btns { display: flex; gap: 8px; }
-      .b { flex: 1; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; }
-      .again { background: rgba(236,72,72,0.15); color: #f87171; } .hard { background: rgba(245,158,11,0.15); color: #fbbf24; } .good { background: rgba(16,185,129,0.15); color: #34d399; } .easy { background: rgba(56,189,248,0.15); color: #38bdf8; }
+      h1 { font-size: 78px; line-height: 0.98; letter-spacing: -0.04em; font-weight: 800; margin-top: 30px; background: linear-gradient(180deg, #ffffff 0%, #c7c9d4 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      h1 em { font-style: normal; background: linear-gradient(90deg, #a78bfa, #38bdf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      p { font-size: 24px; color: #9aa0ad; margin-top: 26px; max-width: 520px; line-height: 1.4; }
+      .pills { display: flex; gap: 10px; margin-top: 34px; }
+      .pill { font-size: 17px; font-weight: 600; padding: 9px 16px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); color: #e5e7ee; }
+      .pill.hl { border-color: rgba(167,139,250,0.5); background: rgba(124,58,237,0.18); color: #d9ccff; }
+      .scene { position: relative; height: 520px; perspective: 1400px; }
+      .shot { position: absolute; width: 600px; left: 0px; top: 70px; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 50px 120px -30px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.04) inset; transform: rotateY(-10deg) rotateX(4deg) rotateZ(1deg); transform-origin: left center; background: #0b0c10; }
+      .shot img { display: block; width: 100%; }
+      .chip { position: absolute; padding: 14px 18px; border-radius: 14px; backdrop-filter: blur(16px); background: rgba(15,16,22,0.85); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 60px -20px rgba(0,0,0,0.9); font-weight: 600; }
+      .chip small { display: block; font-size: 12px; color: #9aa0ad; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 4px; }
+      .chip b { font-size: 26px; letter-spacing: -0.02em; }
+      .c-a { left: -40px; top: 40px; } .c-a b { color: #34d399; }
+      .c-b { left: -20px; bottom: 60px; } .c-b b { color: #38bdf8; }
+      .c-c { right: 0px; bottom: 30px; } .c-c b { color: #a78bfa; }
     </style>
   </head>
   <body>
-    <div class="glow g1"></div>
-    <div class="glow g2"></div>
+    <div class="glow g1"></div><div class="glow g2"></div><div class="glow g3"></div>
+    <div class="grid"></div>
     <div class="wrap">
       <div>
         <div class="brand">
-          <svg width="44" height="44" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs><rect width="128" height="128" rx="28" fill="#0b0c10"/><rect x="22" y="34" width="72" height="52" rx="10" fill="none" stroke="url(#g)" stroke-width="6" transform="rotate(-8 58 60)"/><rect x="36" y="44" width="72" height="52" rx="10" fill="url(#g)"/><path d="M54 70l10 10 18-22" fill="none" stroke="#0b0c10" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="40" height="40" viewBox="0 0 128 128"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#38bdf8"/></linearGradient></defs><rect width="128" height="128" rx="28" fill="#0b0c10"/><rect x="22" y="34" width="72" height="52" rx="10" fill="none" stroke="url(#g)" stroke-width="6" transform="rotate(-8 58 60)"/><rect x="36" y="44" width="72" height="52" rx="10" fill="url(#g)"/><path d="M54 70l10 10 18-22" fill="none" stroke="#0b0c10" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
           VIMS <span>Recall</span>
         </div>
-        <h1>Remember anything.<br/>Forget nothing.</h1>
-        <p>Spaced-repetition flashcards that live on your device. Decks, cloze, custom note types, Anki-style scheduling.</p>
-        <div class="pills"><div class="pill">Local-first</div><div class="pill">Private</div><div class="pill">Free</div></div>
+        <h1>Remember<br/>anything.<br/><em>Forget nothing.</em></h1>
+        <p>Spaced-repetition flashcards that live on your device. Anki-style scheduling, cloze, custom note types, full stats.</p>
+        <div class="pills"><div class="pill hl">Local-first</div><div class="pill">Private</div><div class="pill">Free</div><div class="pill">Imports Anki</div></div>
       </div>
-      <div class="cards">
-        <div class="card c1"></div>
-        <div class="card c2"></div>
-        <div class="card c3">
-          <div class="q">The capital of France is <span class="cloze">[...]</span></div>
-          <div class="btns"><div class="b again">Again</div><div class="b hard">Hard</div><div class="b good">Good</div><div class="b easy">Easy</div></div>
-        </div>
+      <div class="scene">
+        <div class="shot"><img src="shot.png" alt="" /></div>
+        <div class="chip c-a"><small>Grade with</small><b>1 · 2 · 3 · 4</b></div>
+        <div class="chip c-b"><small>Good →</small><b>in 25 days</b></div>
+        <div class="chip c-c"><small>Cloze</small><b>{{c1::…}}</b></div>
       </div>
     </div>
   </body>

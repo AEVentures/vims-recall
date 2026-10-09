@@ -19,7 +19,8 @@ const Fallback = (): JSX.Element => (
 
 const page = (el: JSX.Element): JSX.Element => <Suspense fallback={<Fallback />}>{el}</Suspense>;
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
   {
     path: "/",
     element: <AppShell />,
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
       { path: "notetypes", element: page(<NoteTypesPage />) }
     ]
   }
-]);
+  ],
+  { basename: import.meta.env.BASE_URL.replace(/\/$/, "") }
+);
 
 export const App = (): JSX.Element => {
   const { ready, error } = useBootstrap();

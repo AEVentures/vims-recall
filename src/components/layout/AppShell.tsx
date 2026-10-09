@@ -18,7 +18,7 @@ export const AppShell = (): JSX.Element => {
       <header className="sticky top-0 z-40 border-b border-white/5 bg-background/80 backdrop-blur-xl">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
           <NavLink to="/" className="flex items-center gap-2 font-semibold tracking-tight">
-            <img src="/icon.svg" alt="" className="h-7 w-7" />
+            <img src={`${import.meta.env.BASE_URL}icon.svg`} alt="" className="h-7 w-7" />
             <span>
               VIMS <span className="text-primary">Recall</span>
             </span>
